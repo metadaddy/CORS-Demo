@@ -25,7 +25,7 @@
       }, file.name, 'VersionData', file, function(response){
           console.log(response);
           document.getElementById("message").innerHTML = 
-              "Chatter File created: <a href=\"/" + response.id + "\">Take a look!</a>";
+              "Chatter File created: <a href=\"<%= oauth.instance_url %>/" + response.id + "\">Take a look!</a>";
       }, function(request, status, response){
           console.log(response);
           document.getElementById("message").innerHTML = 
