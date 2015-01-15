@@ -1,0 +1,84 @@
+<!--
+Copyright (C) 2014 Google Inc. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hello World</title>
+<style type="text/css">
+html, body, #wrapper {
+   height:100%;
+   width: 100%;
+   margin: 0;
+   padding: 0;
+   border: 0;
+}
+#inner {
+  margin: 0 auto;  
+}
+#wrapper td {
+   vertical-align: middle;
+   text-align: center;
+}
+#inner td {
+   text-align: left;
+}
+input, label, select, body {
+  font-family: "Arial", Arial, sans-serif;
+}
+input[type="submit"] {
+  -webkit-appearance: button;
+  font-size: 20px;
+  font-weight: normal;  
+}
+.border {
+    border: 2px solid #cccccc;
+    border-radius: 5px;
+}
+.border:focus { 
+    outline: none;
+    border-color: #8ecaed;
+    box-shadow: 0 0 5px #8ecaed;
+}
+</style>
+</head>
+<body>
+  <p>
+    Select a file to upload as a new Chatter File.
+  </p>
+  <input type="file" id="file" onchange="upload()"/>
+  <p id="message"></p>
+<script src="forcetk.js"></script>
+<script>
+  var client = new forcetk.Client();
+  client.setSessionToken('<%= oauth.access_token %>', 'v33.0', '<%= oauth.instance_url %>');
+  function upload() {
+      var file = document.getElementById("file").files[0];
+      client.createBlob('ContentVersion', {
+          Origin: 'H', // 'H' for Chatter File, 'C' for Content Document
+          PathOnClient: file.name
+      }, file.name, 'VersionData', file, function(response){
+          console.log(response);
+          document.getElementById("message").innerHTML = 
+              "Chatter File created: <a href=\"/" + response.id + "\">Take a look!</a>";
+      }, function(request, status, response){
+          console.log(response);
+          document.getElementById("message").innerHTML = 
+              "Error: " + status;
+      });
+  }
+</script>
+</body>
+</html>
