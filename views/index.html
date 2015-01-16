@@ -24,11 +24,18 @@ body {
 
     client.setSessionToken('<%= oauth.access_token %>', 'v33.0', '<%= oauth.instance_url %>');
 
-    jQuery(document).ready(function($) {
-      client.apexrest('/myservice', function(response){
-        console.log(response);
-      }, function(request, status, response){
-        console.log(response);
+    $(document).ready(function() {
+      // client.apexrest('/myservice', function(response){
+      //   console.log(response);
+      // }, function(request, status, response){
+      //   console.log(response);
+      // });
+      $.ajax({
+        type: 'GET',
+        url: '<%= oauth.instance_url %>/services/apexrest/myservice',
+        success: function(response) {
+          console.log(response);
+        }
       });
     });
 
