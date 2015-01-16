@@ -3,35 +3,50 @@
 <head>
 <title>Hello World</title>
 <style type="text/css">
+body {
+  font-family: Sans-Serif;
+}
 </style>
 </head>
 <body>
-  <p>
+  <h3>
     Select a file to upload as a new Chatter File.
-  </p>
+  </h3>
   <input type="file" id="file" onchange="upload()"/>
   <p id="message"></p>
-<script src="forcetk.js"></script>
-<script>
-  var client = new forcetk.Client();
-  client.proxyUrl = null;
-  
-  client.setSessionToken('<%= oauth.access_token %>', 'v33.0', '<%= oauth.instance_url %>');
-  function upload() {
-      var file = document.getElementById("file").files[0];
-      client.createBlob('ContentVersion', {
-          Origin: 'H', // 'H' for Chatter File, 'C' for Content Document
-          PathOnClient: file.name
-      }, file.name, 'VersionData', file, function(response){
-          console.log(response);
-          document.getElementById("message").innerHTML = 
-              "Chatter File created: <a href=\"<%= oauth.instance_url %>/" + response.id + "\">Take a look!</a>";
+  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="forcetk.js"></script>
+  <script>
+    var client = new forcetk.Client();
+
+    // Bypass the proxy - you must whitelist your server in Setup | Security Controls | CORS
+    client.proxyUrl = null;
+
+    client.setSessionToken('<%= oauth.access_token %>', 'v33.0', '<%= oauth.instance_url %>');
+
+    jQuery(document).ready(function($) {
+      client.apexrest('/myservice', function(response){
+        console.log(response);
       }, function(request, status, response){
-          console.log(response);
-          document.getElementById("message").innerHTML = 
-              "Error: " + status;
+        console.log(response);
       });
-  }
-</script>
+    });
+
+    function upload() {
+        var file = document.getElementById("file").files[0];
+        client.createBlob('ContentVersion', {
+            Origin: 'H', // 'H' for Chatter File, 'C' for Content Document
+            PathOnClient: file.name
+        }, file.name, 'VersionData', file, function(response){
+            console.log(response);
+            document.getElementById("message").innerHTML = 
+                "Chatter File created: <a target=\"_blank\" href=\"<%= oauth.instance_url %>/" + response.id + "\">Take a look!</a>";
+        }, function(request, status, response){
+            console.log(response);
+            document.getElementById("message").innerHTML = 
+                "Error: " + status;
+        });
+    }
+  </script>
 </body>
 </html>
