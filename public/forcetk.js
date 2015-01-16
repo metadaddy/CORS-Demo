@@ -416,6 +416,9 @@ if (forcetk.Client === undefined) {
                 }
                 xhr.setRequestHeader(that.authzHeader, "Bearer " + that.sessionId);
                 xhr.setRequestHeader('X-User-Agent', 'salesforce-toolkit-rest-javascript/' + that.apiVersion);
+            },
+            xhrFields: {
+                withCredentials: true
             }
         });
     }
