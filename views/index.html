@@ -30,14 +30,26 @@ body {
       // }, function(request, status, response){
       //   console.log(response);
       // });
-      $.ajax({
-        type: 'GET',
-        url: '<%= oauth.instance_url %>/services/apexrest/gcontacts/myservice',
-        headers: { Authorization: 'Bearer <%= oauth.access_token %>' },
-        success: function(response) {
-          console.log(response);
-        }
-      });
+      // $.ajax({
+      //   type: 'GET',
+      //   url: '<%= oauth.instance_url %>/services/apexrest/gcontacts/myservice',
+      //   headers: { 
+      //     Authorization: 'Bearer <%= oauth.access_token %>' 
+      //   },
+      //   success: function(response) {
+      //     console.log(response);
+      //   },
+      //   xhrFields: {
+      //       withCredentials: true
+      //   }
+      // });
+      var url = '<%= oauth.instance_url %>/services/apexrest/gcontacts/myservice';
+      var req = new XMLHttpRequest();
+      req.onload = function() { console.log(this.responseText); };
+      req.open('get', url, true);
+      req.setRequestHeader('Accept', '*/*');
+      req.setRequestHeader('Authorization', 'Bearer <%= oauth.access_token %>');
+      req.send();    
     });
 
     function upload() {
