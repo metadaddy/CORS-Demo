@@ -43,7 +43,7 @@ body {
       //       withCredentials: true
       //   }
       // });
-      var url = '<%= oauth.instance_url %>/services/apexrest/gcontacts/myservice';
+      var url = '<%= oauth.instance_url %>/services/data/sobjects/ContentDocument';
       var req = new XMLHttpRequest();
       req.onload = function() { console.log(this.responseText); };
       req.open('get', url, true);
