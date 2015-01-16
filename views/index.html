@@ -32,7 +32,7 @@ body {
       // });
       $.ajax({
         type: 'GET',
-        url: '<%= oauth.instance_url %>/services/apexrest/myservice',
+        url: '<%= oauth.instance_url %>/services/apexrest/gcontacts/myservice',
         headers: { Authorization: 'Bearer <%= oauth.access_token %>' },
         success: function(response) {
           console.log(response);
