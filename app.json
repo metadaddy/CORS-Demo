@@ -6,7 +6,7 @@
     "Force.com",
     "CORS"
   ],
-  "website": "http://developer.salesforce.com/blogs/developer-relations/2015/01/spring-15-preview-cross-origin-resource-sharing-force-com-rest-api.html",
+  "website": "http://developer.salesforce.com/blogs/developer-relations/2015/01/spring-15-preview-cors-for-the-force-com-rest-api.html",
   "repository": "https://github.com/metadaddy-sfdc/CORS-Demo",
   "success_url": "/",
   "env": {
