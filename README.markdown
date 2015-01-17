@@ -8,12 +8,10 @@ Instructions
 
 Create a connected app in your Spring '15 org with callback URL `https://your-app.herokuapp.com/oauth/_callback` and `api` scope.
 
-Deploy the demo code to Heroku. (*TODO - Heroku button*)
+Deploy the demo code to Heroku:
 
-Configure the app with:
-
-`heroku config:set CLIENT_ID=[CONSUMER_KEY] CLIENT_SECRET=[CONSUMER_SECRET] REDIRECT_URI=[CALLBACK_URL]`
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 In your Spring '15 org, go to **Setup | Security Controls | CORS** and add `https://your-app.herokuapp.com` as a Whitelisted Origin.
 
-Go to `https://your-app.herokuapp.com`, authorize the app to access your Spring '15 org, and try uploading a file!
+Go to `https://your-app.herokuapp.com/`, authorize the app to access your Spring '15 org, and try uploading a file!
