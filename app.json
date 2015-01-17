@@ -20,7 +20,7 @@
     },
     "REDIRECT_URI": {
       "description": "Your connected app's Callback URL",
-      "value": "https://your-app.herokuapp.com/oauth/_callback"
+      "value": "https://your-app.herokuapp.com/oauth/_callback",
       "required": true
     }
   }
