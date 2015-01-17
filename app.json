@@ -1,0 +1,27 @@
+{
+  "name": "Spring '15 Force.com REST API CORS Demo",
+  "description": "This minimal sample shows how JavaScript outside the Force.com platform can access the Force.com REST API.",
+  "keywords": [
+    "Salesforce",
+    "Force.com",
+    "CORS"
+  ],
+  "website": "http://developer.salesforce.com/blogs/developer-relations/2015/01/spring-15-preview-cross-origin-resource-sharing-force-com-rest-api.html",
+  "repository": "https://github.com/metadaddy-sfdc/CORS-Demo",
+  "success_url": "/",
+  "env": {
+    "CLIENT_ID": {
+      "description": "Your connected app's Consumer Key",
+      "required": true
+    },
+    "CLIENT_SECRET": {
+      "description": "Your connected app's Consumer Secret",
+      "required": true
+    },
+    "REDIRECT_URI": {
+      "description": "Your connected app's Callback URL",
+      "value": "https://your-app.herokuapp.com/oauth/_callback"
+      "required": true
+    }
+  }
+}
