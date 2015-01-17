@@ -1,5 +1,5 @@
 {
-  "name": "Spring '15 Force.com REST API CORS Demo",
+  "name": "Force.com REST API CORS Demo",
   "description": "This minimal sample shows how JavaScript outside the Force.com platform can access the Force.com REST API.",
   "keywords": [
     "Salesforce",
